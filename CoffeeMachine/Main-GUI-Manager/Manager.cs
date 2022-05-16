@@ -13,7 +13,7 @@ namespace CoffeeMachine.Main_GUI_Manager
         Machine machine = new Machine();
         Coffee coffee;
 
-        public Coffee InitializeMachine(int waterAmount, int beanAmount, int degrees)
+        public string[] BrewCoffee(int waterAmount, int beanAmount, int degrees)
         {
             Water water = new Water(waterAmount);
             Bean beans = new Bean(beanAmount);
@@ -27,7 +27,12 @@ namespace CoffeeMachine.Main_GUI_Manager
             coffee = machine.BrewCoffee(water, beans);
             machine.OnOff = false;
             machine.RemoveFilter();
-            return coffee;
+
+            string[] coffeeDetails = new string[2];
+            coffeeDetails[0] = coffee.CoffeeAmount.ToString();
+            coffeeDetails[1] = coffee.CoffeeStrength.ToString();
+
+            return coffeeDetails;
         }
     }
 }

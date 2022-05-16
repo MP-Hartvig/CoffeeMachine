@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine.Main_GUI_Manager
 {
+    // This class creates a menu for the user to navigate through
     public class GUI
     {
-        Coffee coffee;
         Manager mana = new Manager();
         bool spacebarTerminator = false;
 
@@ -25,10 +25,7 @@ namespace CoffeeMachine.Main_GUI_Manager
                 Console.WriteLine("               Coffee Machine");
                 Console.WriteLine("==================================================\n");
                 Console.WriteLine("1. Brew coffee");
-                Console.WriteLine("2. (NOT WORKING)");
-                Console.WriteLine("3. (NOT WORKING)");
-                Console.WriteLine("4. (NOT WORKING)");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("2. Exit");
                 Console.Write("\r\nEnter a number: ");
 
 
@@ -39,20 +36,8 @@ namespace CoffeeMachine.Main_GUI_Manager
                     case '1':
                         BrewCoffeeMenu();
                         break;
-                    //case '2':
-                    //    Console.WriteLine("==================================================\n");
-
-                    //    break;
-                    //case '3':
-                    //    Console.WriteLine("==================================================\n");
-
-                    //    break;
-                    //case '4':
-                    //    Console.WriteLine("==================================================\n");
-
-                    //    break;
                     // Exits the program
-                    case '5':
+                    case '2':
                         ExitApplication();
                         break;
                     default:
@@ -78,9 +63,9 @@ namespace CoffeeMachine.Main_GUI_Manager
             int degrees = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("\nCoffee is now being brewed.");
-            coffee = mana.InitializeMachine(waterAmount, beanAmount, degrees);
+            string[] coffeeDetails = mana.BrewCoffee(waterAmount, beanAmount, degrees);
 
-            Console.WriteLine($"\n{coffee.CoffeeAmount}ml of coffee was produced, with a strength of {coffee.CoffeeStrength}");
+            Console.WriteLine($"\n{coffeeDetails[0]}ml of coffee was produced, with a strength of {coffeeDetails[1]}");
 
             Console.WriteLine("\nPress spacebar to return to main menu.");
 
