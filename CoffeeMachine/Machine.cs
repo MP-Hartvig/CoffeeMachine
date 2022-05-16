@@ -1,4 +1,6 @@
-﻿using CoffeeMachine.Interfaces;
+﻿using CoffeeMachine.Ingredients;
+using CoffeeMachine.Interfaces;
+using CoffeeMachine.Liquids;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,29 +9,29 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine
 {
-    public class Machine : IHeater, IContainer, ISwitch, IFilter
+    public class Machine : IHeater, IContainer, ISwitch, IFilter, IGrinder
     {
-        public int MinDegrees { get; }
-        public int MaxDegrees { get; }
-        public int ActualDegrees { get; }
-
-        public int MinAmount { get; }
-        public int MaxAmount { get; }
-        public int ActualAmount { get; }
-
-        bool ISwitch.OnOff { get; }
-
-        bool IFilter.FilterInserted { get; }
+        public bool FilterInserted { get; set; }
+        public int Degrees { get; set; }
+        public bool OnOff { get; set; }
 
         public Machine() { }
 
         public void FillContainer() { }
 
+        public void AddFilter() { }
+
         public void TurnOn() { }
 
-        public void TurnOff() { }
+        public void GrindBeans() { }
 
-        public void AddFilter() { }
+        public Coffee BrewCoffee(Water water, Bean beans) 
+        {
+            Coffee coffee = new Coffee(water, beans);
+            return coffee;
+        }
+
+        public void TurnOff() { }
 
         public void RemoveFilter() { }
     }

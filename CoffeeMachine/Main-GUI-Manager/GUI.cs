@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeMachine.Liquids;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace CoffeeMachine.Main_GUI_Manager
 {
     public class GUI
     {
+        Coffee coffee;
         Manager mana = new Manager();
         bool spacebarTerminator = false;
 
@@ -69,14 +71,16 @@ namespace CoffeeMachine.Main_GUI_Manager
             Console.Write("Enter water amount (Between 200ml to 2000ml): ");
             int waterAmount = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("\nEnter bean amount (Between 50g to 300g): ");
+            Console.Write("\nEnter bean amount (Between 1g to 50g): ");
             int beanAmount = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("\nEnter amount of degrees (Between 80 degrees to 100 degrees): ");
             int degrees = Convert.ToInt32(Console.ReadLine());
 
-            mana.InitializeMachine(waterAmount, beanAmount, degrees);
             Console.WriteLine("\nCoffee is now being brewed.");
+            coffee = mana.InitializeMachine(waterAmount, beanAmount, degrees);
+
+            Console.WriteLine($"\n{coffee.CoffeeAmount}ml of coffee was produced, with a strength of {coffee.CoffeeStrength}");
 
             Console.WriteLine("\nPress spacebar to return to main menu.");
 

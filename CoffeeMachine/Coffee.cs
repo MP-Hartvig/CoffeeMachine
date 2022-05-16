@@ -9,23 +9,24 @@ namespace CoffeeMachine.Liquids
 {
     public class Coffee
     {
-        int CoffeeAmount;
-        int CoffeeStrength;
+        public int CoffeeAmount;
+        public string CoffeeStrength;
 
         public Coffee(Water water, Bean bean)
         {
             CoffeeAmount = GetWaterAmount(water);
-            CoffeeStrength = GetBeanAmount(bean);
+            CoffeeStrength = GetCoffeeStrength(bean);
         }
 
-        public int GetWaterAmount(Water water)
+        private int GetWaterAmount(Water water)
         {
             return water.Mililiter;
         }
 
-        public int GetBeanAmount(Bean bean) 
+        private string GetCoffeeStrength(Bean bean) 
         {
-            return (bean.Gram - 50) / (300 - 50);
+            float percentage = bean.Gram / 50;
+            return percentage.ToString("P");
         }
     }
 }

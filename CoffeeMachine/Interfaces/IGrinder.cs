@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine.Interfaces
 {
-    public interface IHeater
+    public interface IGrinder
     {
-        int Degrees { get; }
+        void GrindBeans();
     }
 }

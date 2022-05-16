@@ -46,6 +46,7 @@
     <Compile Include="Ingredients\Bean.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
     <Compile Include="Interfaces\IFilter.cs" />
+    <Compile Include="Interfaces\IGrinder.cs" />
     <Compile Include="Interfaces\IHeater.cs" />
     <Compile Include="Interfaces\ISwitch.cs" />
     <Compile Include="Coffee.cs" />

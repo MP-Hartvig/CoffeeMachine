@@ -1,4 +1,5 @@
 ﻿using CoffeeMachine.Ingredients;
+using CoffeeMachine.Liquids;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,24 @@ namespace CoffeeMachine.Main_GUI_Manager
 {
     internal class Manager
     {
-        public void InitializeMachine(int waterAmount, int beanAmount, int degrees)
+        Machine machine = new Machine();
+        Coffee coffee;
+
+        public Coffee InitializeMachine(int waterAmount, int beanAmount, int degrees)
         {
             Water water = new Water(waterAmount);
-            Bean bean = new Bean(beanAmount);
+            Bean beans = new Bean(beanAmount);
 
-            Machine machine = new Machine();
+            machine.AddFilter();
+            machine.FilterInserted = true;
+            machine.Degrees = degrees;
+            machine.OnOff = true;
+            machine.FillContainer();
+            machine.GrindBeans();
+            coffee = machine.BrewCoffee(water, beans);
+            machine.OnOff = false;
+            machine.RemoveFilter();
+            return coffee;
         }
     }
 }

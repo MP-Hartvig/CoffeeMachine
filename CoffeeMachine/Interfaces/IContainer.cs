@@ -8,10 +8,6 @@ namespace CoffeeMachine.Interfaces
 {
     public interface IContainer
     {
-        int MinAmount { get; }
-        int MaxAmount { get; }
-        int ActualAmount { get; }
-
         void FillContainer();
     }
 }
