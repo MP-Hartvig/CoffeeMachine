@@ -44,13 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ingredients\Bean.cs" />
+    <Compile Include="Ingredients\Herb.cs" />
+    <Compile Include="Ingredients\Tea.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
     <Compile Include="Interfaces\IFilter.cs" />
     <Compile Include="Interfaces\IGrinder.cs" />
     <Compile Include="Interfaces\IHeater.cs" />
     <Compile Include="Interfaces\ISwitch.cs" />
-    <Compile Include="Coffee.cs" />
-    <Compile Include="Machine.cs" />
+    <Compile Include="Ingredients\Coffee.cs" />
+    <Compile Include="Factory\Machine.cs" />
     <Compile Include="Main-GUI-Manager\GUI.cs" />
     <Compile Include="Main-GUI-Manager\Manager.cs" />
     <Compile Include="Main-GUI-Manager\Program.cs" />

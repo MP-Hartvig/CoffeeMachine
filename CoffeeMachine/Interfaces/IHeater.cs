@@ -9,5 +9,7 @@ namespace CoffeeMachine.Interfaces
     public interface IHeater
     {
         int Degrees { get; }
+
+        void SetDegrees(int degrees);
     }
 }

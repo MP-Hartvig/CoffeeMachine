@@ -22,10 +22,11 @@ namespace CoffeeMachine.Main_GUI_Manager
             {
                 Console.Clear();
                 Console.WriteLine("==================================================");
-                Console.WriteLine("               Coffee Machine");
+                Console.WriteLine("               Hot Beverage Machine");
                 Console.WriteLine("==================================================\n");
                 Console.WriteLine("1. Brew coffee");
-                Console.WriteLine("2. Exit");
+                Console.WriteLine("2. Brew Tea");
+                Console.WriteLine("3. Exit");
                 Console.Write("\r\nEnter a number: ");
 
 
@@ -36,8 +37,11 @@ namespace CoffeeMachine.Main_GUI_Manager
                     case '1':
                         BrewCoffeeMenu();
                         break;
-                    // Exits the program
                     case '2':
+                        BrewTeaMenu();
+                        break;
+                    // Exits the program
+                    case '3':
                         ExitApplication();
                         break;
                     default:
@@ -66,6 +70,38 @@ namespace CoffeeMachine.Main_GUI_Manager
             string[] coffeeDetails = mana.BrewCoffee(waterAmount, beanAmount, degrees);
 
             Console.WriteLine($"\n{coffeeDetails[0]}ml of coffee was produced, with a strength of {coffeeDetails[1]}");
+
+            Console.WriteLine("\nPress spacebar to return to main menu.");
+
+            while (spacebarTerminator == false)
+            {
+                if (Console.ReadKey().Key == ConsoleKey.Spacebar)
+                {
+                    spacebarTerminator = true;
+                }
+            }
+        }
+
+        private void BrewTeaMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("==================================================");
+            Console.WriteLine("               Tea Machine");
+            Console.WriteLine("==================================================\n");
+
+            Console.Write("Enter water amount (Between 200ml to 2000ml): ");
+            int waterAmount = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("\nEnter herb amount (Between 1g to 20g): ");
+            int herbAmount = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("\nEnter amount of degrees (Between 80 degrees to 100 degrees): ");
+            int degrees = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("\nTea is now being brewed.");
+            string[] teaDetails = mana.BrewTea(waterAmount, herbAmount, degrees);
+
+            Console.WriteLine($"\n{teaDetails[0]}ml of tea was produced, with a strength of {teaDetails[1]}");
 
             Console.WriteLine("\nPress spacebar to return to main menu.");
 

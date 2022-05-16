@@ -12,20 +12,20 @@ namespace CoffeeMachine.Main_GUI_Manager
     {
         Machine machine = new Machine();
         Coffee coffee;
+        Tea tea;
 
         public string[] BrewCoffee(int waterAmount, int beanAmount, int degrees)
         {
             Water water = new Water(waterAmount);
             Bean beans = new Bean(beanAmount);
 
-            machine.AddFilter();
-            machine.FilterInserted = true;
-            machine.Degrees = degrees;
-            machine.OnOff = true;
             machine.FillContainer();
+            machine.AddFilter();
+            machine.TurnOn();
+            machine.SetDegrees(degrees);
             machine.GrindBeans();
             coffee = machine.BrewCoffee(water, beans);
-            machine.OnOff = false;
+            machine.TurnOff();
             machine.RemoveFilter();
 
             string[] coffeeDetails = new string[2];
@@ -33,6 +33,26 @@ namespace CoffeeMachine.Main_GUI_Manager
             coffeeDetails[1] = coffee.CoffeeStrength.ToString();
 
             return coffeeDetails;
+        }
+
+        public string[] BrewTea(int waterAmount, int herbAmount, int degrees)
+        {
+            Water water = new Water(waterAmount);
+            Herb herb = new Herb(herbAmount);
+
+            machine.FillContainer();
+            machine.AddFilter();
+            machine.TurnOn();
+            machine.SetDegrees(degrees);
+            tea = machine.BrewTea(water, herb);
+            machine.TurnOff();
+            machine.RemoveFilter();
+
+            string[] TeaDetails = new string[2];
+            TeaDetails[0] = tea.TeaAmount.ToString();
+            TeaDetails[1] = tea.TeaStrength.ToString();
+
+            return TeaDetails;
         }
     }
 }
