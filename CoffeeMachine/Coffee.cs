@@ -25,7 +25,9 @@ namespace CoffeeMachine.Liquids
 
         private string GetCoffeeStrength(Bean bean) 
         {
-            float percentage = bean.Gram / 50;
+            double maxAmount = 50;
+            Convert.ToDouble(bean.Gram);
+            double percentage = bean.Gram / maxAmount;
             return percentage.ToString("P");
         }
     }
